@@ -33,7 +33,6 @@ const populateFileList = (files) => {
     });
 };
 
-
 document.addEventListener("DOMContentLoaded", () => {
     span_err.innerHTML = "";
     
@@ -41,27 +40,20 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch(file_name)
     .then(response => {
         if (!response.ok) {
-            // throw new Error('無法讀取檔案');
-
             showError(`無法讀取檔案: ${file_name}`);
+
+            // throw new Error('無法讀取檔案');
         }
         return response.text();
     })
     .then(data => {
-        document.getElementById('file-list2').innerHTML = "Test123";
-
         const files = data.trim().split('\n');
         if (files.length === 0) {
             showError('檔案清單為空');
-
-            // throw new Error('檔案清單為空');
         }
         populateFileList(files);
     })
     .catch(error => {
         showError(`讀取檔案清單失敗: ${error}`);
-
-        // console.error('讀取檔案清單失敗:', error);
-        // showError('無法載入檔案列表');
     });
 });
