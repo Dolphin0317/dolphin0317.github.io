@@ -2,13 +2,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const file_name='file-list.html'
     const fileListElement = document.getElementById('file-list');
 
-    var hyper = document.createElement('a');
-    var newItem = document.createElement('li');
   
     // 顯示錯誤訊息的函式
     const showError = (message) => {
         fileListElement.innerHTML = ''; // 清空載入中提示
 
+        const newItem = document.createElement('li');
         newItem.textContent= `${message}`
         fileList.appendChild(newItem);
     };
@@ -18,11 +17,16 @@ document.addEventListener("DOMContentLoaded", () => {
         fileListElement.innerHTML = ''; // 清空載入中提示
         
         files.forEach(file => {
+            const hyperlink = document.createElement('a');
+            
             hyperlink.title= file;
             hyperlink.href= file;
-            newItem.appendChild(hyper);
+            hyperlink.textContent = file;
             
-            //newItem.innerHTML = `<a href="${file}">${file}</a>`;
+            const newItem = document.createElement('li');
+            newItem.appendChild(hyperlink);
+            
+            // 將 <li> 元素添加到 <ul> 中
             fileListElement.appendChild(newItem);
         });
     };
