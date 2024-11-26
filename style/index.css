@@ -24,6 +24,7 @@ body {
     font-weight: bold;
     color: #4CAF50;
     margin-bottom: 10px;
+    display: none;
 }
 
 .file-list {
