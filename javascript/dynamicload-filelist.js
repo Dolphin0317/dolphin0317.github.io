@@ -54,6 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
         populateFileList(files);
     })
     .catch(error => {
-        showError(`讀取檔案清單失敗: ${error}`);
+        showError(`讀取檔案清單失敗: ${error} <br/>${file_Name}`);
     });
 });
