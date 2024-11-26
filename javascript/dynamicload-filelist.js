@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch(file_name)
     .then(response => {
         if (!response.ok) {
-            showError(`無法讀取檔案: ${file_name}`);
+            showError(`L43: 無法讀取檔案: ${file_name}`);
 
             // throw new Error('無法讀取檔案');
         }
@@ -49,11 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(data => {
         const files = data.trim().split('\n');
         if (files.length === 0) {
-            showError('檔案清單為空');
+            showError('L52: 檔案清單為空');
         }
         populateFileList(files);
     })
     .catch(error => {
-        showError(`讀取檔案清單失敗: ${error} <br/>${file_Name}`);
+        showError(`L57: 讀取檔案清單失敗: ${error} <br/>${file_Name}`);
     });
 });
