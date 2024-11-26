@@ -7,8 +7,7 @@ const file_name='file-list.html'
 fetch(file_name)
   .then(response => response.text())
   .then(data => {
-      document.querySelector('.file-list2 ul').innerHTML = data;
-      alter(data);
+      document.querySelector('.file-list2 ul').innerHTML = "Test123";
     
       // 將檔案清單分割成陣列
       const files = data.trim().split('\n');
