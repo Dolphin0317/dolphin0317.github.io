@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
         fileListElement.innerHTML = ''; // 清空載入中提示
 
         const newItem = document.createElement('li');
-        newItem.textContent= `${message}`
-        fileList.appendChild(newItem);
+        newItem.textContent= `${message}`；
+        fileListElement.appendChild(newItem);
     };
 
     // 動態生成檔案列表的函式
