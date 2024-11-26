@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return response.text();
         })
         .then(data => {
-            document.querySelector('file-list2').innerHTML = "Test123";
+            document.querySelector('#file-list2').innerHTML = "Test123";
           
             const files = data.trim().split('\n');
             if (files.length === 0) {
