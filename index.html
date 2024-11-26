@@ -69,16 +69,27 @@
         <div class="owner-name">Kevin Lin</div>
         <div class="owner-info">以下是 Kevin Lin 的檔案列表：</div>
         <div class="file-list">
-        <!-- GitHub Actions 會生成並更新此列表 -->
+            <!-- 動態插入的檔案列表 -->
             <ul>
-                <li><a href="#">檔案 1.html</a></li>
-                <li><a href="#">檔案 2.html</a></li>
-                <li><a href="#">檔案 3.html</a></li>
+                <!-- file-list.html 的內容將自動插入至此處 -->
+                <li>檔案列表正在載入中...</li>
             </ul>
         </div>
         <footer>
             &copy; 2024 Kevin Lin. 保留所有權利。
         </footer>
     </div>
+    <script>
+        // 使用 fetch 動態加載 file-list.html
+        fetch('file-list.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('.file-list ul').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('載入檔案列表時發生錯誤:', error);
+                document.querySelector('.file-list ul').innerHTML = '<li>無法載入檔案列表。</li>';
+            });
+    </script>
 </body>
 </html>
