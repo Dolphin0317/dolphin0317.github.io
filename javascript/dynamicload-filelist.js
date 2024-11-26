@@ -1,7 +1,7 @@
+document.addEventListener("DOMContentLoaded", () => {
     const file_name='file-list.html'
     const fileListElement = document.getElementById('file-list');
-
-  
+    
     // 顯示錯誤訊息的函式
     const showError = (message) => {
         fileListElement.innerHTML = ''; // 清空載入中提示
@@ -51,4 +51,4 @@
             console.error('讀取檔案清單失敗:', error);
             showError('無法載入檔案列表');
         });
-
+});
