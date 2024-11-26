@@ -1,8 +1,9 @@
 const fileList = document.getElementById('file-list');
 
-// 使用 fetch 動態加載 file-list.html
-const file_name='file-list.txt'
 
+const file_name='file-list.html'
+
+// 使用 fetch 動態加載 file-list.html
 fetch(file_name)
   .then(response => response.text())
   .then(data => {
