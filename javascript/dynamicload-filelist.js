@@ -1,19 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
     const file_name='file-list.html'
     const fileListElement = document.getElementById('file-list');
+
+    var hyper = document.createElement('a');
+    var newItem = document.createElement('li');
   
     // 顯示錯誤訊息的函式
     const showError = (message) => {
-        fileListElement.innerHTML = `<li>${message}</li>`;
+        fileListElement.innerHTML = ''; // 清空載入中提示
+
+        newItem.textContent= `${message}`
+        fileList.appendChild(newItem);
     };
 
     // 動態生成檔案列表的函式
     const populateFileList = (files) => {
         fileListElement.innerHTML = ''; // 清空載入中提示
+        
         files.forEach(file => {
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `<a href="${file}">${file}</a>`;
-            fileListElement.appendChild(listItem);
+            hyperlink.title= file;
+            hyperlink.href= file;
+            newItem.appendChild(hyper);
+            
+            //newItem.innerHTML = `<a href="${file}">${file}</a>`;
+            fileListElement.appendChild(newItem);
         });
     };
 
