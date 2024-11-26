@@ -1,4 +1,3 @@
-document.addEventListener("DOMContentLoaded", () => {
     const file_name='file-list.html'
     const fileListElement = document.getElementById('file-list');
 
@@ -52,4 +51,4 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error('讀取檔案清單失敗:', error);
             showError('無法載入檔案列表');
         });
-});
+
