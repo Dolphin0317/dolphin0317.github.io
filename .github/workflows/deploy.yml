@@ -1,0 +1,48 @@
+name: Deploy Jekyll Site from Private Repo
+
+on:
+  push:
+    branches:
+      - main # 監控 main 分支的變更
+  workflow_dispatch: # 支援手動觸發
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. 檢出 Public Repository
+    - name: Checkout Public Repository
+      uses: actions/checkout@v3
+
+    # 2. 檢出 Private Repository (SingleFile-Archives)
+    - name: Checkout Private Repository
+      uses: actions/checkout@v3
+      with:
+        repository: YourUsername/SingleFile-Archives
+        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }} # Private Token
+        path: singlefile-repo # 提取到此資料夾
+
+    # 3. 設置 Ruby 環境 (Jekyll 需要)
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.1
+        bundler-cache: true
+
+    # 4. 安裝 Jekyll 依賴
+    - name: Install Dependencies
+      run: |
+        bundle install
+
+    # 5. 構建 Jekyll 靜態網站
+    - name: Build Jekyll Site
+      run: |
+        bundle exec jekyll build --source singlefile-repo --destination _site
+
+    # 6. 部署到 GitHub Pages
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./_site
